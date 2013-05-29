@@ -11,7 +11,6 @@ class Welcome extends CI_Controller {
 
 	}
 
-
 	public function signin()
 	{
 		$this->load->view('signin');
