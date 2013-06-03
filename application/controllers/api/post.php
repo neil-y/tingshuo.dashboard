@@ -20,6 +20,8 @@ class Post extends CI_Controller {
 		$content = $this->input->post('content');	
 		$user_id = $this->input->post('user_id');
 		$user = $this->User_Model->findbyid($user_id);
+		$type = $this->input->post('type');
+		$type = $type ? $type : 0; 
 
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -35,6 +37,7 @@ class Post extends CI_Controller {
 			'user_id' => $user_id,
 			'createtime' => date('Y-m-d H:m:s'),
 			'post_avator' => $user['avator_s_url'],
+			'type' => $type,
 			);
 		$post = $this->Post_Model->save($post);
 		echo json_encode($post);
